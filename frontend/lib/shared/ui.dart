@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../core/api_client.dart';
 
-const ink = Color(0xFF142B26);
-const green = Color(0xFF176B4F);
-const cream = Color(0xFFF5F6F0);
+const ink = Color(0xFF101B3D);
+const brandBlue = Color(0xFF0866FF);
+const canvas = Color(0xFFF5F8FC);
 
 String money(dynamic value) =>
     '${NumberFormat('#,##0', 'ru').format(double.tryParse('$value') ?? 0)} ₸';
 String label(String value) =>
     const {
       'draft': 'Черновик',
-      'active': 'Опубликован',
+      'active': 'Активен',
       'assigned': 'Перевозчик выбран',
       'in_transit': 'В пути',
       'completed': 'Завершён',
@@ -83,7 +83,7 @@ class EmptyState extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.all(36),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Icon(icon, size: 52, color: green),
+        Icon(icon, size: 52, color: brandBlue),
         const SizedBox(height: 16),
         Text(text, textAlign: TextAlign.center)
       ]));
@@ -95,7 +95,7 @@ class StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Chip(
       label: Text(label(status), style: const TextStyle(fontSize: 12)),
-      backgroundColor: green.withValues(alpha: .08),
+      backgroundColor: (['active', 'available', 'accepted', 'completed', 'verified'].contains(status) ? const Color(0xFF08A65A) : brandBlue).withValues(alpha: .10),
       side: BorderSide.none);
 }
 
@@ -105,7 +105,7 @@ class PageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
       child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 960), child: child));
+          constraints: const BoxConstraints(maxWidth: 760), child: child));
 }
 
 class FormFieldInput extends StatelessWidget {

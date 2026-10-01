@@ -105,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                   margin: const EdgeInsets.only(bottom: 12),
                                   padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
-                                      color: own ? green : Colors.white,
+                                      color: own ? const Color(0xFFE0EFFF) : canvas,
                                       borderRadius: BorderRadius.circular(16)),
                                   child: Column(
                                       crossAxisAlignment:
@@ -119,15 +119,13 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     : 'Вложение (${m['type']}). Открытие файлов будет добавлено позже.',
                                             style: TextStyle(
                                                 color:
-                                                    own ? Colors.white : ink)),
+                                                    ink)),
                                         const SizedBox(height: 6),
                                         Text(
                                             '${(m['created_at'] as String).substring(11, 16)}${own && m['read_at'] != null ? ' • Прочитано' : ''}',
                                             style: TextStyle(
                                                 fontSize: 11,
-                                                color: own
-                                                    ? Colors.white70
-                                                    : Colors.grey))
+                                                color: Colors.blueGrey))
                                       ])));
                         }).toList())),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [

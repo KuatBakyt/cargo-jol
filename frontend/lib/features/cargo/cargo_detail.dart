@@ -54,7 +54,7 @@ class _CargoDetailState extends State<CargoDetail> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(title: const Text('Карточка груза')),
+      appBar: AppBar(title: const Text('Груз')),
       body: PageBody(
           child: AsyncPanel(
               future: future,
@@ -83,13 +83,13 @@ class _CargoDetailState extends State<CargoDetail> {
                   const SizedBox(height: 20),
                   ListTile(
                       contentPadding: EdgeInsets.zero,
-                      leading: const Icon(Icons.trip_origin, color: green),
+                      leading: const Icon(Icons.trip_origin, color: brandBlue),
                       title: Text(cargo['from_address'] as String),
                       subtitle: Text('Загрузка: ${cargo['loading_date']}')),
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading:
-                          const Icon(Icons.location_on_outlined, color: green),
+                          const Icon(Icons.location_on_outlined, color: brandBlue),
                       title: Text(cargo['to_address'] as String),
                       subtitle: const Text('Адрес разгрузки')),
                   const Divider(height: 32),
@@ -97,7 +97,7 @@ class _CargoDetailState extends State<CargoDetail> {
                       style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w900,
-                          color: green)),
+                          color: ink)),
                   const SizedBox(height: 12),
                   Text(cargo['description'] as String),
                   const SizedBox(height: 20),
@@ -267,7 +267,7 @@ class _OffersPanelState extends State<OffersPanel> {
                                             onPressed: busy
                                                 ? null
                                                 : () => action(offer, 'accept'),
-                                            child: const Text('Выбрать')),
+                                            child: const Text('Принять')),
                                         TextButton(
                                             onPressed: busy
                                                 ? null

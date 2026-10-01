@@ -91,7 +91,7 @@ class _OrderDetailState extends State<OrderDetail> {
                       style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w900,
-                          color: green)),
+                          color: brandBlue)),
                   StatusChip(status),
                   const SizedBox(height: 16),
                   Text(
@@ -104,7 +104,7 @@ class _OrderDetailState extends State<OrderDetail> {
                           current >= e.key
                               ? Icons.check_circle
                               : Icons.radio_button_unchecked,
-                          color: current >= e.key ? green : Colors.grey),
+                          color: current >= e.key ? brandBlue : Colors.grey),
                       title: Text(label(e.value)))),
                   if (next != null)
                     FilledButton(

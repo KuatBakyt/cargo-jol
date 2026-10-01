@@ -65,30 +65,30 @@ class _AuthScreenState extends State<AuthScreen> {
               child: SingleChildScrollView(
                   padding: const EdgeInsets.all(24),
                   child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 460),
+                      constraints: const BoxConstraints(maxWidth: 380),
                       child: Form(
                           key: form,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 const Icon(Icons.local_shipping_rounded,
-                                    color: green, size: 54),
+                                    color: brandBlue, size: 54),
                                 const SizedBox(height: 12),
-                                const Text('JOL CARGO',
+                                const Text('JOL Cargo',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 26,
                                         fontWeight: FontWeight.w900,
-                                        letterSpacing: 2)),
+                                        color: brandBlue)),
                                 const SizedBox(height: 8),
                                 const Text(
-                                    'Грузы и перевозчики. На одной дороге.',
+                                    'Находите грузы и перевозчиков\nпо всему Казахстану.',
                                     textAlign: TextAlign.center),
                                 const SizedBox(height: 36),
                                 Text(
                                     register
                                         ? 'Создать аккаунт'
-                                        : 'С возвращением',
+                                        : 'Перевозки без лишних звонков',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall),

@@ -72,7 +72,7 @@ class _CargoListState extends State<CargoList> {
             Text(
                 widget.favorites
                     ? 'Сохранённые грузы'
-                    : 'Здравствуйте, ${session.name}',
+                    : session.isCarrier ? 'Найти груз' : 'Мои грузы',
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall
@@ -231,22 +231,22 @@ class CargoCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           onTap: onTap,
           child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(16),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(children: [
-                      const Icon(Icons.route, color: green),
+                      const Icon(Icons.route, color: brandBlue),
                       const SizedBox(width: 10),
                       Expanded(
                           child: Text(
                               '${cargo['from_city']} → ${cargo['to_city']}',
                               style: const TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w800)))
+                                  fontSize: 17, fontWeight: FontWeight.w800)))
                     ]),
                     const SizedBox(height: 14),
                     Text(
-                        '${cargo['cargo_name']} • ${cargo['weight_kg']} кг • ${cargo['volume_m3']} м³'),
+                        '${cargo['cargo_name']} · ${cargo['weight_kg']} кг · ${label(cargo['body_type'] as String)}'),
                     const SizedBox(height: 6),
                     Text(
                         '${label(cargo['body_type'] as String)} • Загрузка ${cargo['loading_date']}'),
@@ -257,11 +257,13 @@ class CargoCard extends StatelessWidget {
                         children: [
                           Text(money(cargo['price']),
                               style: const TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.w900,
-                                  color: green)),
+                                  color: ink)),
                           StatusChip(cargo['status'] as String),
-                          Text('${cargo['offers_count']} предложений')
+                          Text('${cargo['offers_count']} предложений', style: const TextStyle(color: brandBlue, fontSize: 12))
                         ]),
+                    const SizedBox(height: 12),
+                    SizedBox(width: double.infinity, child: FilledButton.tonal(onPressed: onTap, child: const Text('Подробнее'))),
                   ]))));
 }

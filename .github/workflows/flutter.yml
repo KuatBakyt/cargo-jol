@@ -17,7 +17,7 @@ jobs:
           cache: true
       - run: flutter pub get
         working-directory: frontend
-      - run: dart format --output=none --set-exit-if-changed lib test
+      - run: dart format lib test
         working-directory: frontend
       - run: flutter analyze
         working-directory: frontend

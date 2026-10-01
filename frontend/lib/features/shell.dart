@@ -5,6 +5,7 @@ import '../shared/ui.dart';
 import 'cargo/cargo_list.dart';
 import 'orders/orders_screen.dart';
 import 'profile/profile_screen.dart';
+import 'home_screen.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
@@ -18,12 +19,14 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     final carrier = context.watch<Session>().isCarrier;
     final pages = [
+      HomeScreen(openCargo: () => setState(() => selected = 1), openProfile: () => setState(() => selected = 4)),
       const CargoList(),
       const OrdersScreen(),
       const CargoList(favorites: true),
       const ProfileScreen()
     ];
     final destinations = [
+      const NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Главная'),
       NavigationDestination(
           icon: const Icon(Icons.dashboard_outlined),
           selectedIcon: const Icon(Icons.dashboard),
@@ -37,9 +40,7 @@ class _AppShellState extends State<AppShell> {
     ];
     return Scaffold(
       appBar: AppBar(
-          title: const Text('JOL CARGO',
-              style:
-                  TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1.5)),
+          centerTitle: false, title: Text(selected == 0 ? 'Здравствуйте, ${context.watch<Session>().name}' : ['Главная', 'Найти груз', 'Заказы', 'Избранное', 'Профиль'][selected], style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 19)),
           actions: [
             IconButton(
                 tooltip: 'Уведомления',
@@ -123,12 +124,12 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           n['is_read'] == true
                               ? Icons.notifications_none
                               : Icons.notifications_active,
-                          color: green),
+                          color: brandBlue),
                       title: Text(n['title'] as String),
                       subtitle: Text(n['message'] as String? ?? ''),
                       trailing: n['is_read'] == true
                           ? null
-                          : const Icon(Icons.circle, size: 8, color: green),
+                          : const Icon(Icons.circle, size: 8, color: brandBlue),
                       onTap: () async {
                         try {
                           await context

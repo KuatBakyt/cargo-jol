@@ -54,7 +54,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           child: ListTile(
                               contentPadding: const EdgeInsets.all(16),
                               leading: const Icon(Icons.local_shipping_outlined,
-                                  color: green),
+                                  color: brandBlue),
                               title: Text(
                                   'Заказ №${order['id']} • ${money(order['agreed_price'])}'),
                               subtitle: Column(

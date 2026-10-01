@@ -21,22 +21,28 @@ class JolApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
-          scaffoldBackgroundColor: cream,
+          scaffoldBackgroundColor: Colors.white,
           colorScheme: ColorScheme.fromSeed(
-              seedColor: green, primary: green, surface: Colors.white),
+              seedColor: brandBlue, primary: brandBlue, surface: Colors.white),
           appBarTheme: const AppBarTheme(
-              backgroundColor: cream, foregroundColor: ink, centerTitle: false),
+              backgroundColor: Colors.white, foregroundColor: ink, centerTitle: true, elevation: 0, scrolledUnderElevation: 0),
+          cardTheme: CardThemeData(
+            color: Colors.white, elevation: 0,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: const BorderSide(color: Color(0xFFECF0F6))),
+          ),
+          navigationBarTheme: const NavigationBarThemeData(backgroundColor: Colors.white, indicatorColor: Color(0xFFE8F2FF), height: 68),
+          dividerTheme: const DividerThemeData(color: Color(0xFFECF0F6)),
           inputDecorationTheme: InputDecorationTheme(
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
-                  borderSide: const BorderSide(color: Color(0xFFD8E0DB)))),
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: Color(0xFFE1E8F2)))),
           filledButtonTheme: FilledButtonThemeData(
               style: FilledButton.styleFrom(
                   minimumSize: const Size(0, 50),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14)))),
+                      borderRadius: BorderRadius.circular(8)))),
         ),
         home: Consumer<Session>(builder: (context, session, _) {
           if (session.loading) {

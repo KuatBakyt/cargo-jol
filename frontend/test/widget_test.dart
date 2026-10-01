@@ -11,7 +11,7 @@ void main() {
     await tester.pumpWidget(ChangeNotifierProvider(
         create: (_) => Session(ApiClient()),
         child: const MaterialApp(home: AuthScreen())));
-    expect(find.text('С возвращением'), findsOneWidget);
+    expect(find.text('Перевозки без лишних звонков'), findsOneWidget);
     await tester.tap(find.text('Войти'));
     await tester.pump();
     expect(find.text('Введите email'), findsOneWidget);
