@@ -6,8 +6,11 @@ import 'package:jol_cargo/core/session.dart';
 import 'package:jol_cargo/features/auth/auth_screen.dart';
 
 void main() {
-  testWidgets('Registration offers both roles and validates input', (tester) async {
-    await tester.pumpWidget(ChangeNotifierProvider(create: (_) => Session(ApiClient()), child: const MaterialApp(home: AuthScreen())));
+  testWidgets('Registration offers both roles and validates input',
+      (tester) async {
+    await tester.pumpWidget(ChangeNotifierProvider(
+        create: (_) => Session(ApiClient()),
+        child: const MaterialApp(home: AuthScreen())));
     expect(find.text('С возвращением'), findsOneWidget);
     await tester.tap(find.text('Войти'));
     await tester.pump();
@@ -26,7 +29,9 @@ void main() {
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    await tester.pumpWidget(ChangeNotifierProvider(create: (_) => Session(ApiClient()), child: const MaterialApp(home: AuthScreen())));
+    await tester.pumpWidget(ChangeNotifierProvider(
+        create: (_) => Session(ApiClient()),
+        child: const MaterialApp(home: AuthScreen())));
     await tester.ensureVisible(find.text('Нет аккаунта? Регистрация'));
     await tester.tap(find.text('Нет аккаунта? Регистрация'));
     await tester.pumpAndSettle();

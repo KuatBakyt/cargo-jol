@@ -15,9 +15,9 @@ class JolApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'JOL Cargo',
-    locale: const Locale('ru'),
-    supportedLocales: const [Locale('ru')],
-    localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
