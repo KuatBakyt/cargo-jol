@@ -25,12 +25,22 @@ class JolApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
               seedColor: brandBlue, primary: brandBlue, surface: Colors.white),
           appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white, foregroundColor: ink, centerTitle: true, elevation: 0, scrolledUnderElevation: 0),
+              backgroundColor: Colors.white,
+              foregroundColor: ink,
+              centerTitle: true,
+              elevation: 0,
+              scrolledUnderElevation: 0),
           cardTheme: CardThemeData(
-            color: Colors.white, elevation: 0,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: const BorderSide(color: Color(0xFFECF0F6))),
+            color: Colors.white,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: const BorderSide(color: Color(0xFFECF0F6))),
           ),
-          navigationBarTheme: const NavigationBarThemeData(backgroundColor: Colors.white, indicatorColor: Color(0xFFE8F2FF), height: 68),
+          navigationBarTheme: const NavigationBarThemeData(
+              backgroundColor: Colors.white,
+              indicatorColor: Color(0xFFE8F2FF),
+              height: 68),
           dividerTheme: const DividerThemeData(color: Color(0xFFECF0F6)),
           inputDecorationTheme: InputDecorationTheme(
               filled: true,

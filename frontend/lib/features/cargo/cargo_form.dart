@@ -94,7 +94,7 @@ class _CargoFormState extends State<CargoForm> {
       appBar: AppBar(title: const Text('Разместить груз')),
       body: PageBody(
           child: Stepper(
-            type: StepperType.horizontal,
+              type: StepperType.horizontal,
               currentStep: step,
               onStepTapped: busy ? null : (i) => setState(() => step = i),
               onStepContinue: busy

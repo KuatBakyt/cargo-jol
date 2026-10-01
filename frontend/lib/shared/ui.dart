@@ -95,7 +95,16 @@ class StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Chip(
       label: Text(label(status), style: const TextStyle(fontSize: 12)),
-      backgroundColor: (['active', 'available', 'accepted', 'completed', 'verified'].contains(status) ? const Color(0xFF08A65A) : brandBlue).withValues(alpha: .10),
+      backgroundColor: ([
+        'active',
+        'available',
+        'accepted',
+        'completed',
+        'verified'
+      ].contains(status)
+              ? const Color(0xFF08A65A)
+              : brandBlue)
+          .withValues(alpha: .10),
       side: BorderSide.none);
 }
 

@@ -88,8 +88,8 @@ class _CargoDetailState extends State<CargoDetail> {
                       subtitle: Text('Загрузка: ${cargo['loading_date']}')),
                   ListTile(
                       contentPadding: EdgeInsets.zero,
-                      leading:
-                          const Icon(Icons.location_on_outlined, color: brandBlue),
+                      leading: const Icon(Icons.location_on_outlined,
+                          color: brandBlue),
                       title: Text(cargo['to_address'] as String),
                       subtitle: const Text('Адрес разгрузки')),
                   const Divider(height: 32),

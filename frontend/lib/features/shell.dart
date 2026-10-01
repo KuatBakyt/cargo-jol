@@ -19,14 +19,19 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     final carrier = context.watch<Session>().isCarrier;
     final pages = [
-      HomeScreen(openCargo: () => setState(() => selected = 1), openProfile: () => setState(() => selected = 4)),
+      HomeScreen(
+          openCargo: () => setState(() => selected = 1),
+          openProfile: () => setState(() => selected = 4)),
       const CargoList(),
       const OrdersScreen(),
       const CargoList(favorites: true),
       const ProfileScreen()
     ];
     final destinations = [
-      const NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Главная'),
+      const NavigationDestination(
+          icon: Icon(Icons.home_outlined),
+          selectedIcon: Icon(Icons.home),
+          label: 'Главная'),
       NavigationDestination(
           icon: const Icon(Icons.dashboard_outlined),
           selectedIcon: const Icon(Icons.dashboard),
@@ -40,7 +45,19 @@ class _AppShellState extends State<AppShell> {
     ];
     return Scaffold(
       appBar: AppBar(
-          centerTitle: false, title: Text(selected == 0 ? 'Здравствуйте, ${context.watch<Session>().name}' : ['Главная', 'Найти груз', 'Заказы', 'Избранное', 'Профиль'][selected], style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 19)),
+          centerTitle: false,
+          title: Text(
+              selected == 0
+                  ? 'Здравствуйте, ${context.watch<Session>().name}'
+                  : [
+                      'Главная',
+                      'Найти груз',
+                      'Заказы',
+                      'Избранное',
+                      'Профиль'
+                    ][selected],
+              style:
+                  const TextStyle(fontWeight: FontWeight.w800, fontSize: 19)),
           actions: [
             IconButton(
                 tooltip: 'Уведомления',

@@ -105,7 +105,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                   margin: const EdgeInsets.only(bottom: 12),
                                   padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
-                                      color: own ? const Color(0xFFE0EFFF) : canvas,
+                                      color: own
+                                          ? const Color(0xFFE0EFFF)
+                                          : canvas,
                                       borderRadius: BorderRadius.circular(16)),
                                   child: Column(
                                       crossAxisAlignment:
@@ -117,9 +119,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                 : m['type'] == 'location'
                                                     ? 'Координаты: ${m['latitude']}, ${m['longitude']}'
                                                     : 'Вложение (${m['type']}). Открытие файлов будет добавлено позже.',
-                                            style: TextStyle(
-                                                color:
-                                                    ink)),
+                                            style: TextStyle(color: ink)),
                                         const SizedBox(height: 6),
                                         Text(
                                             '${(m['created_at'] as String).substring(11, 16)}${own && m['read_at'] != null ? ' • Прочитано' : ''}',

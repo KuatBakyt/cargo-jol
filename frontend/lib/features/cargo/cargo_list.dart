@@ -72,7 +72,9 @@ class _CargoListState extends State<CargoList> {
             Text(
                 widget.favorites
                     ? 'Сохранённые грузы'
-                    : session.isCarrier ? 'Найти груз' : 'Мои грузы',
+                    : session.isCarrier
+                        ? 'Найти груз'
+                        : 'Мои грузы',
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall
@@ -261,9 +263,14 @@ class CargoCard extends StatelessWidget {
                                   fontWeight: FontWeight.w900,
                                   color: ink)),
                           StatusChip(cargo['status'] as String),
-                          Text('${cargo['offers_count']} предложений', style: const TextStyle(color: brandBlue, fontSize: 12))
+                          Text('${cargo['offers_count']} предложений',
+                              style: const TextStyle(
+                                  color: brandBlue, fontSize: 12))
                         ]),
                     const SizedBox(height: 12),
-                    SizedBox(width: double.infinity, child: FilledButton.tonal(onPressed: onTap, child: const Text('Подробнее'))),
+                    SizedBox(
+                        width: double.infinity,
+                        child: FilledButton.tonal(
+                            onPressed: onTap, child: const Text('Подробнее'))),
                   ]))));
 }
