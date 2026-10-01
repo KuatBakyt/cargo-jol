@@ -40,5 +40,5 @@ jobs:
           docker compose build api
           docker compose run --rm api python manage.py migrate
           docker compose up -d api
-          curl --fail --retry 15 --retry-delay 2 --retry-connrefused http://localhost:8000/api/schema > /tmp/docker-schema.yaml
+          curl --fail --retry 15 --retry-delay 2 --retry-connrefused --retry-all-errors http://localhost:8000/api/schema > /tmp/docker-schema.yaml
           docker compose down
