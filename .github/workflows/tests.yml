@@ -1,0 +1,36 @@
+name: Backend checks
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: jol_cargo
+          POSTGRES_USER: jol
+          POSTGRES_PASSWORD: test-password
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U jol -d jol_cargo"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DEBUG: 'true'
+      POSTGRES_HOST: localhost
+      POSTGRES_DB: jol_cargo
+      POSTGRES_USER: jol
+      POSTGRES_PASSWORD: test-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check backend && ruff format --check backend
+      - run: python manage.py makemigrations --check --dry-run
+        working-directory: backend
+      - run: python manage.py test --settings=config.postgres_test_settings
+        working-directory: backend
+      - run: python manage.py spectacular --validate --fail-on-warn --file /tmp/schema.yaml --settings=config.test_settings
+        working-directory: backend

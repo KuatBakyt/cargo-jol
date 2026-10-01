@@ -1,0 +1,7 @@
+.git
+.venv
+.env
+**/__pycache__
+**/private_uploads
+**/staticfiles
+.ruff_cache

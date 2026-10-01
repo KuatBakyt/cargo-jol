@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+*.sqlite3
+backend/private_uploads/
+backend/staticfiles/
+.ruff_cache/
