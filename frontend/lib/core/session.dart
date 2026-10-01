@@ -15,7 +15,9 @@ class Session extends ChangeNotifier {
   String? restoreError;
   bool get isCarrier => user?['role'] == 'carrier';
   int get userId => user!['id'] as int;
-  String get name => (user?['first_name'] as String?)?.isNotEmpty == true ? user!['first_name'] as String : 'Пользователь';
+  String get name => (user?['first_name'] as String?)?.isNotEmpty == true
+      ? user!['first_name'] as String
+      : 'Пользователь';
 
   Future<void> initialize() async {
     loading = true;
@@ -33,14 +35,17 @@ class Session extends ChangeNotifier {
   }
 
   Future<void> login(String email, String password) async {
-    final response = await api.dio.post('/auth/login', data: {'email': email.trim(), 'password': password}, options: Options(extra: {'public': true}));
+    final response = await api.dio.post('/auth/login',
+        data: {'email': email.trim(), 'password': password},
+        options: Options(extra: {'public': true}));
     await api.saveTokens(Map<String, dynamic>.from(response.data as Map));
     user = await api.get('/auth/me');
     notifyListeners();
   }
 
   Future<void> register(Map<String, dynamic> data) async {
-    await api.dio.post('/auth/register', data: data, options: Options(extra: {'public': true}));
+    await api.dio.post('/auth/register',
+        data: data, options: Options(extra: {'public': true}));
     await login(data['email'] as String, data['password'] as String);
   }
 

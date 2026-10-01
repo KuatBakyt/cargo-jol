@@ -19,6 +19,8 @@ jobs:
         working-directory: frontend
       - run: dart format lib test
         working-directory: frontend
+      - run: dart fix --apply
+        working-directory: frontend
       - run: flutter analyze
         working-directory: frontend
       - run: flutter test
