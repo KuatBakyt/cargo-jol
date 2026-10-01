@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     future = Future.wait([
       session.api.get('/cargo', query: session.isCarrier ? {'status': 'active'} : {'mine': 'true'}),
       if (session.isCarrier) session.api.get('/vehicles'),
+      session.api.get('/orders'),
     ]);
   }
   void refresh() => setState(load);
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 16), FilledButton.icon(onPressed: createCargo, icon: const Icon(Icons.add), label: const Text('РАЗМЕСТИТЬ ГРУЗ')),
           ])),
           const SizedBox(height: 16),
-          Row(children: [Expanded(child: _Metric(title: 'Всего грузов', value: '${data.first['count']}')), const SizedBox(width: 12), Expanded(child: _Metric(title: 'На странице', value: '${cargos.length}'))]),
+          Row(children: [Expanded(child: _Metric(title: 'Мои грузы', value: '${data.first['count']}')), const SizedBox(width: 12), Expanded(child: _Metric(title: 'Перевозки', value: '${data.last['count']}'))]),
         ],
         const SizedBox(height: 20),
         Row(children: [Expanded(child: Text(session.isCarrier ? 'Доступные грузы' : 'Мои грузы', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800))), TextButton(onPressed: widget.openCargo, child: const Text('Смотреть все'))]),
