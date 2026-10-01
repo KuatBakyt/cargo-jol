@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'core/api_client.dart';
 import 'core/session.dart';
@@ -14,6 +15,9 @@ class JolApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'JOL Cargo',
+    locale: const Locale('ru'),
+    supportedLocales: const [Locale('ru')],
+    localizationsDelegates: GlobalMaterialLocalizations.delegates,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
