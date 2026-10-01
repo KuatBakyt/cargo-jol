@@ -149,7 +149,7 @@ class _CargoListState extends State<CargoList> {
               builder: (data) {
                 final rows =
                     (data['results'] as List).cast<Map<String, dynamic>>();
-                if (rows.isEmpty)
+                if (rows.isEmpty) {
                   return RefreshIndicator(
                       onRefresh: () async {
                         refresh();
@@ -164,6 +164,7 @@ class _CargoListState extends State<CargoList> {
                                     ? 'Грузов по этому маршруту пока нет.'
                                     : 'Разместите первый груз, чтобы получить предложения.')
                           ]));
+                }
                 return RefreshIndicator(
                     onRefresh: () async {
                       refresh();

@@ -257,11 +257,12 @@ class _CompanyPanelState extends State<CompanyPanel> {
       retry: () => setState(load),
       builder: (data) {
         final rows = data['results'] as List;
-        if (rows.isEmpty)
+        if (rows.isEmpty) {
           return OutlinedButton.icon(
               onPressed: add,
               icon: const Icon(Icons.business_outlined),
               label: const Text('Добавить компанию'));
+        }
         final company = rows.first as Map;
         return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

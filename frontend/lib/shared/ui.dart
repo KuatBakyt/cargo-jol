@@ -53,9 +53,10 @@ class AsyncPanel<T> extends StatelessWidget {
   Widget build(BuildContext context) => FutureBuilder<T>(
         future: future,
         builder: (context, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done)
+          if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CircularProgressIndicator());
-          if (snapshot.hasError)
+          }
+          if (snapshot.hasError) {
             return Center(
                 child: Padding(
                     padding: const EdgeInsets.all(24),
@@ -68,6 +69,7 @@ class AsyncPanel<T> extends StatelessWidget {
                       OutlinedButton(
                           onPressed: retry, child: const Text('Повторить'))
                     ])));
+          }
           return builder(snapshot.data as T);
         },
       );

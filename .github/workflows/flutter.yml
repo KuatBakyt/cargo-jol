@@ -25,7 +25,7 @@ jobs:
         working-directory: frontend
       - run: flutter test
         working-directory: frontend
-      - run: flutter build web --dart-define=API_URL=http://localhost:8000/api
+      - run: flutter build web --no-web-resources-cdn --dart-define=API_URL=http://localhost:8000/api
         working-directory: frontend
       - uses: actions/upload-artifact@v4
         if: always()

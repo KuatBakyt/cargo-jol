@@ -35,10 +35,11 @@ class JolApp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14)))),
         ),
         home: Consumer<Session>(builder: (context, session, _) {
-          if (session.loading)
+          if (session.loading) {
             return const Scaffold(
                 body: Center(child: CircularProgressIndicator()));
-          if (session.restoreError != null)
+          }
+          if (session.restoreError != null) {
             return Scaffold(
                 body: Center(
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -52,6 +53,7 @@ class JolApp extends StatelessWidget {
               TextButton(
                   onPressed: session.logout, child: const Text('Войти заново'))
             ])));
+          }
           // Reset navigation and screen state when switching accounts.
           return session.user == null
               ? const AuthScreen()

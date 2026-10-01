@@ -101,8 +101,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               builder: (data) {
                 final rows =
                     (data['results'] as List).cast<Map<String, dynamic>>();
-                if (rows.isEmpty)
+                if (rows.isEmpty) {
                   return const EmptyState('Уведомлений пока нет');
+                }
                 return ListView(children: [
                   TextButton(
                       onPressed: () async {

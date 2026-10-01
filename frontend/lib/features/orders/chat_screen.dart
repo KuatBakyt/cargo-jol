@@ -42,12 +42,13 @@ class _ChatScreenState extends State<ChatScreen> {
       final response = await api
           .get('/conversations/${widget.id}/messages', query: {'page': page});
       await api.post('/conversations/${widget.id}/read');
-      if (mounted)
+      if (mounted) {
         setState(() {
           messages = (response['results'] as List).cast<Map<String, dynamic>>();
           hasNext = response['next'] != null;
           error = null;
         });
+      }
     } catch (e) {
       if (mounted) setState(() => error = errorText(e));
     } finally {
