@@ -27,6 +27,12 @@ jobs:
         working-directory: frontend
       - run: flutter build web --no-web-resources-cdn --dart-define=API_URL=http://localhost:8000/api
         working-directory: frontend
+      - name: Inspect Web startup on desktop and phone
+        run: |
+          npm install --prefix /tmp/jol-ui-check playwright@1.56.1
+          /tmp/jol-ui-check/node_modules/.bin/playwright install --with-deps chromium
+          python3 -m http.server 3000 --directory frontend/build/web >/tmp/jol-web.log 2>&1 &
+          node frontend/tool/preview.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -36,3 +42,4 @@ jobs:
             frontend/test
             frontend/pubspec.lock
             frontend/build/web
+            frontend/build/screenshots
