@@ -234,7 +234,7 @@ class MarketplaceTests(APITestCase):
             download = self.client.get(file_url)
             self.assertEqual(download.status_code, 200)
             self.assertTrue(download["Content-Disposition"].startswith("attachment;"))
-            download.close()
+            self.assertTrue(b"".join(download.streaming_content).startswith(b"%PDF-"))
             bad = self.client.post(
                 url,
                 {"type": "image", "attachment": SimpleUploadedFile("photo.png", b"fake image")},
